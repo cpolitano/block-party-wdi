@@ -1,9 +1,13 @@
 source 'https://rubygems.org'
 
 # gems for Twitter authentication
-gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+# gem for app key security
+gem 'figaro'
+
+gem 'byebug'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'

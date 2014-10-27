@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
+  root 'welcome#index'
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/signout" => "sessions#destroy", :as => :signout
+
+  # get '/auth/twitter/callback' => 'blocks#index'
+
   # See how all your routes lay out with "rake routes".
   resources :blocks, only: [:index, :destroy]
   resources :tweets, only: [:index, :destroy]
 
   # You can have the root of your site routed with "root"
-  root 'blocks#index'
+
+  # devise_scope :user do
+  #   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
+  #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

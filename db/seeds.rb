@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+blocks = Block.create([
+  { name: 'anonymous', screen_name: 'troll1', created_at: '10-25-14' },
+  { name: 'gr123', screen_name: 'gr123', created_at: '10-21-14' },
+  { name: 'teradactyl', screen_name: 'teradactyl83', created_at: '10-27-14' }
+  ])
