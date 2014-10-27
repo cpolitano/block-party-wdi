@@ -1,9 +1,10 @@
 class BlocksController < ApplicationController
 
-  before_action :authenticate_user!, :except =>[:index]
+  # before_action :authenticate_user!, :except =>[:index]
 
   def index
     @blocks = Block.all
+    @users = User.all
     # @blocks = Block.where(user: current_user)
   end
 
