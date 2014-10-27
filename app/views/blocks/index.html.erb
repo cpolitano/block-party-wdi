@@ -1,0 +1,15 @@
+<% if user_signed_in? %> 
+  <h1>Your Blocks</h1>
+
+  <ul class="blocks">
+    <% @blocks.each do |block| %>
+      <li>@<%= block.screen_name %> | <%= block.name %> | <%= block.created_at %></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <div class="welcome">
+    <h1>block party</h1>
+    <p>Let's make Twitter fun again! Auto-block the jerks so you can focus on the fun stuff.</p>
+  </div>
+<% end %>
