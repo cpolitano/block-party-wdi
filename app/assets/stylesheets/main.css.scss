@@ -37,11 +37,20 @@ h1 {
   }
 }
 
-.notice, nav {
+nav {
+  background: $accentColor;
+  color: #FFF;
   font-size: 1.75em;
-  margin: 2% auto 0;
+  height: 2em;
+  line-height: 1.75em;
+  margin: 0 auto;
+  opacity: 0.5;
   text-align: center;
-  width: 10em;
+  width: 100%;
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
 }
 
 button {
@@ -56,5 +65,12 @@ button {
   &:hover {
     background-color: darken($accentColor, 20%);
     transition: .5s ease;
+  }
+}
+
+.unblock {
+  a {
+    color: #FFF;
+    text-decoration: none;
   }
 }

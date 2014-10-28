@@ -3,10 +3,7 @@ class BlocksController < ApplicationController
   before_action :current_user, :initialize_twitter
 
   def index
-    # debugging method just for development
-    @users = User.all
-
-    # Checking for any abusive tweets, and identifying the users who sent them
+    # Checking for abusive tweets, and identifying the users who sent them
     @users_to_block = @current_user.determine_blocks(@twitter, @twitter.mentions_timeline)
 
     # Blocking all users identified in previous step
@@ -17,19 +14,20 @@ class BlocksController < ApplicationController
     # Collecting all blocked users and recent mentions for display in view
     @blocks = @twitter.blocked
     @mentions = @twitter.mentions_timeline
-    # render json: @users_to_block
+    # render json: @blocks
     # byebug
   end
 
   def create
-    @blocks["users"].each do |block|
-      block = Block.new(block_params)
+    @blocks.each do |block|
+      block = Block.new(screen_name: block["screen_name"], name: block["name"], created_at: block["created_at"], twitter_id: block["id_str"])
       block.user_id = @current_user.id
     end
   end
 
   def destroy
     @block = Block.find(params[:id])
+    @twitter.unblock(@block.screen_name)
     @block.destroy
     redirect_to blocks_path
   end

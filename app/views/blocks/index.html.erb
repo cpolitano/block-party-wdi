@@ -1,4 +1,4 @@
-<nav><%= link_to 'sign out', signout_path %></nav>
+<nav><%= notice %> <%= link_to 'sign out', signout_path %></nav>
 
 <div class="blocks">
 
@@ -7,7 +7,7 @@
     <% @blocks.each do |block| %>
       <li>@<%= block["screen_name"] %>, <%= block["name"] %><br>
         <%= block["created_at"] %><br>
-        <button class="unblock" href="#">unblock</button></li>
+        <button class="unblock"><%= link_to 'unblock', block_path(block.id), :method => :delete %></button></li>
     <% end %>
   </ul>
 
