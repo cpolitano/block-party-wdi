@@ -10,11 +10,11 @@
     <% end %>
   </ul>
 
-  <h2>users</h2>
+  <h2>your mentions</h2>
   <ul class="block-list">
     <li>Current user: <%= @current_user.twitter_screen_name %></li>
-    <% @users.each do |user| %>
-      <li>@<%= user.twitter_screen_name %></li>
+    <% @mentions.each do |mention| %>
+      <li>@<%= mention["user"]["screen_name"] %>: <%= mention["text"] %></li>
     <% end %>
   </ul>
 

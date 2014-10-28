@@ -6,7 +6,8 @@ class BlocksController < ApplicationController
     @users = User.all
     # @blocks = @current_user.show_blocks
     @blocks = @twitter.blocked
-    # render json: @blocks
+    @mentions = @twitter.mentions_timeline
+    # render json: @mentions
     # byebug
   end
 
