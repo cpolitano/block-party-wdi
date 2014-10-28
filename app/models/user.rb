@@ -10,21 +10,20 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def show_blocks
-  #   consumer_key = OAuth::Consumer.new(ENV["twitter_key"],ENV["twitter_secret"])
-  #   access_token = OAuth::Token.new(ENV["block_party_token"],ENV["block_party_secret"])
-  #   baseurl = "https://api.twitter.com"
-  #   path = "/1.1/blocks/list.json?skip_status=true&cursor=-1"
-  #   address = URI("#{baseurl}#{path}")
-  #   http = Net::HTTP.new address.host, address.port
-  #   http.use_ssl = true
-  #   http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-  #   request = Net::HTTP::Get.new address.request_uri
-  #   request.oauth! http, consumer_key, access_token
-  #   http.start
-  #   response = http.request request
-  #   JSON.parse(response.body)
-  # end
+  # Compares text of a mention to trigger words array. Returns a username if user's tweet text includes a trigger word.
+  def determine_blocks(mentions)
+    # Words associated with online harassment
+    trigger_words = ["rape","murder","nigger","slut","whore","bitch","testword"]
+    users_to_block = []
+    mentions.each do |mention|
+      mention["text"].split(" ").each do |word|
+        if trigger_words.include?(word) && @twitter.friendship?(self, mention["user"]["screen_name"]) == false
+            users_to_block << mention["user"]["screen_name"]
+        end
+      end
+    end
+    return users_to_block
+  end
 
 end
 

@@ -4,10 +4,14 @@ class BlocksController < ApplicationController
 
   def index
     @users = User.all
-    # @blocks = @current_user.show_blocks
+
+    @users_to_block = @current_user.determine_blocks(@twitter.mentions_timeline)
+    @users_to_block.each do |user|
+      @twitter.block(user)
+    end
     @blocks = @twitter.blocked
     @mentions = @twitter.mentions_timeline
-    # render json: @mentions
+    # render json: @users_to_block
     # byebug
   end
 

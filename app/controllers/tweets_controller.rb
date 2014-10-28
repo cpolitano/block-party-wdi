@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 
-  before_action :current_user!
+  before_action :current_user
 
   def index
     @tweets = Tweet.where(user: @current_user)

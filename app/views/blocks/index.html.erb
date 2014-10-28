@@ -3,14 +3,13 @@
 <div class="blocks">
 
   <h2>your blocks</h2>
-
   <ul class="block-list">   
     <% @blocks.each do |block| %>
       <li>@<%= block["screen_name"] %> | <%= block["name"] %> | <%= block["created_at"] %></li>
     <% end %>
   </ul>
 
-  <h2>your mentions</h2>
+  <h2>recent mentions</h2>
   <ul class="block-list">
     <li>Current user: <%= @current_user.twitter_screen_name %></li>
     <% @mentions.each do |mention| %>
