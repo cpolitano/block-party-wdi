@@ -1,10 +1,12 @@
+<nav><%= link_to 'sign out', signout_path %></nav>
+
 <div class="blocks">
 
   <h2>your blocks</h2>
 
-  <ul class="block-list">
+  <ul class="block-list">   
     <% @blocks.each do |block| %>
-      <li>@<%= block.screen_name %> | <%= block.name %> | <%= block.created_at %></li>
+      <li>@<%= block["screen_name"] %> | <%= block["name"] %> | <%= block["created_at"] %></li>
     <% end %>
   </ul>
 
