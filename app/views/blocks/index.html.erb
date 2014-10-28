@@ -10,6 +10,7 @@
 
   <h2>users</h2>
   <ul class="block-list">
+    <li>Current user: <%= @current_user.twitter_screen_name %></li>
     <% @users.each do |user| %>
       <li>@<%= user.twitter_screen_name %></li>
     <% end %>

@@ -1,9 +1,9 @@
 class TweetsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :current_user!
 
   def index
-    @tweets = Tweet.where(user: current_user)
+    @tweets = Tweet.where(user: @current_user)
   end
 
   def destroy
