@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/auth/twitter/callback' => 'blocks#index'
 
   # See how all your routes lay out with "rake routes".
-  resources :blocks, only: [:index, :destroy]
+  resources :blocks, only: [:index, :create, :destroy]
   resources :tweets, only: [:index, :destroy]
 
   # You can have the root of your site routed with "root"

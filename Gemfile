@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# Twitter API gem
+gem 'twitter'
+
 # gem for app key security
 gem 'figaro'
 

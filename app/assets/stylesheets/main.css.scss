@@ -6,11 +6,11 @@ $accentColor: #55ACEE;
 }
 
 body {
-  background: url(../assets/dino-party.jpg) right top no-repeat;
+  background: url(../assets/dino-party.jpg) right top fixed no-repeat;
   background-color: #EEE;
   background-size: cover;
   color: #111;
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
 }
 
@@ -22,9 +22,26 @@ h1 {
 
 .welcome, .blocks {
   float: left;
+  margin-left: 8%;
+  width: 42%;
+}
+
+.welcome {
   font-size: 1.75em;
-  margin-left: 10%;
-  width: 40%;
+}
+
+.blocks {
+  font-size: 1.25em;
+  h2 {
+    font-size: 2em;
+  }
+}
+
+.notice, nav {
+  font-size: 1.75em;
+  margin: 2% auto 0;
+  text-align: center;
+  width: 10em;
 }
 
 button {
