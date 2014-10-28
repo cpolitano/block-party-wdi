@@ -5,7 +5,9 @@
   <h2>your blocks</h2>
   <ul class="block-list">   
     <% @blocks.each do |block| %>
-      <li>@<%= block["screen_name"] %> | <%= block["name"] %> | <%= block["created_at"] %></li>
+      <li>@<%= block["screen_name"] %>, <%= block["name"] %><br>
+        <%= block["created_at"] %><br>
+        <button class="unblock" href="#">unblock</button></li>
     <% end %>
   </ul>
 

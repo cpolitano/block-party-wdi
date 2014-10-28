@@ -11,13 +11,13 @@ class User < ActiveRecord::Base
   end
 
   # Compares text of a mention to trigger words array. Returns a username if user's tweet text includes a trigger word.
-  def determine_blocks(mentions)
+  def determine_blocks(twitter, mentions)
     # Words associated with online harassment
-    trigger_words = ["rape","murder","nigger","slut","whore","bitch","testword"]
+    trigger_words = ["rape","murder","nigger","slut","whore","bitch","cunt","kill","die","testword","soda"]
     users_to_block = []
     mentions.each do |mention|
       mention["text"].split(" ").each do |word|
-        if trigger_words.include?(word) && @twitter.friendship?(self, mention["user"]["screen_name"]) == false
+        if trigger_words.include?(word) && twitter.friendship?(self, mention["user"]["screen_name"]) == false
             users_to_block << mention["user"]["screen_name"]
         end
       end
