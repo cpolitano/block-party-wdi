@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
       mention.text.split(" ").each do |word|
         if trigger_words.include?(word) && twitter.friendship?(self, mention.user.screen_name) == false
             users_to_block << mention.user.screen_name
-            # Tweet.new(screenname: mention.user.screen_name, name: mention.user.name, text: mention.text, date: mention.created_at, tweetid: mention.id_str, user_id: self.id)
+            Tweet.new(screenname: mention.user.screen_name, name: mention.user.name, text: mention.text, date: mention.created_at, tweetid: mention.id.to_s, user_id: self.id)
         end
       end
     end
