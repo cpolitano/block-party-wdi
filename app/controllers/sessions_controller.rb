@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
     session[:token] = auth["credentials"]["token"]
     session[:token_secret] = auth["credentials"]["secret"]
     session[:twitter_screen_name] = @user.twitter_screen_name
-    redirect_to '/blocks', :notice => "Signed in as @"+ @user.twitter_screen_name
+    redirect_to '/blocks', :notice => "signed in as @"+ @user.twitter_screen_name
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Signed out!"
+    redirect_to root_url, :notice => "signed out!"
   end
   
 end

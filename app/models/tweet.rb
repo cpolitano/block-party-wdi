@@ -5,7 +5,6 @@ class Tweet < ActiveRecord::Base
   validates :name, presence: true
   validates :text, presence: true
   validates :date, presence: true
-  validates :created_at, presence: true
-  validates :tweetid, presence: true
+  validates :tweetid, presence: true, uniqueness: true
 
 end

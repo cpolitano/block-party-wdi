@@ -11,10 +11,10 @@ class BlocksController < ApplicationController
       @twitter.block(user)
     end
 
-    # Ensuring all blocked users are persisted to DB
+    # Ensuring all users blocked on Twitter are also persisted to DB
     @all_blocks = @twitter.blocked
-    @all_blocks.each do |user|
-      Block.create_block(user, @current_user)
+    @all_blocks.each do |blocked_user|
+      Block.create_block(blocked_user, @current_user)
     end
 
     # Collecting blocked users & mentions for current user to display in views
@@ -31,8 +31,11 @@ class BlocksController < ApplicationController
   def destroy
     @block = Block.find(params[:id])
     @twitter.unblock(@block.screen_name)
-    @block.destroy
-    redirect_to blocks_path
+    @block.destroy   
+    # render '/blocks'
+    respond_to do |format|
+      format.json { render json: 'unblocked', status: 200 }
+    end
   end
 
   private

@@ -1,20 +1,19 @@
 $(document).ready(function(){
   
-  // A method to unblock a user.
-  $(".unblock").on("click", function(){
-    resourceUrl = 'https://api.twitter.com/1.1/blocks/destroy.json?screen_name=';
-    userName = '';
+  // AJAX call to execute destroy function in blocks controller
+  $("li.unblock").on("click", function(){
+    id = $(this).attr("id");
+    button = $(this).children();
+    button.css({"background-color": "#25E89A"});
+    button.text("unblocked!");
     $.ajax({
-      type: 'POST',
-      dataType: 'json',
-      url: resourceURL + userName,
-      data: { key: value },
-      success: function () {
-        console.log("success");
-      },
-      error: function() {
-        console.log("didn't work");
-      },
+      url: "blocks/" + id, 
+      type: "DELETE",
+      dataType: "json",
+      success: function() {
+        console.log('success!');
+        $(this).remove();
+      }
     });
   })
   
