@@ -24,8 +24,7 @@ class BlocksController < ApplicationController
   end
 
   def create
-    # @blocks = @twitter.blocked
-    # Block.create_blocks(@blocks, @current_user)
+
   end
 
   def destroy
@@ -34,19 +33,11 @@ class BlocksController < ApplicationController
     @block.destroy   
     # render '/blocks'
     respond_to do |format|
-      format.json { render json: 'unblocked', status: 200 }
+      format.json { render json: @block, status: 200 }
     end
   end
 
   private
-
-  def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      redirect_to '/'
-    end 
-  end
 
   def initialize_twitter
     @twitter = Twitter::REST::Client.new do |config|
