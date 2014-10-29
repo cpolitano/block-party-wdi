@@ -32,6 +32,7 @@ h1 {
 
 .blocks {
   font-size: 1.25em;
+  margin-top: 3em;
   h2 {
     font-size: 2em;
   }
@@ -44,18 +45,24 @@ nav {
   height: 2em;
   line-height: 1.75em;
   margin: 0 auto;
-  opacity: 0.5;
-  text-align: center;
+  opacity: 0.7;
+  position: fixed;
   width: 100%;
-  span {
+  z-index: 10;
+  .notice {
     float: left;
     margin-left: 2%;
   }
-  a {
-    color: #FFF;
+  .blockparty {
     float: right;
     margin-right: 2%;
+  }
+  a {
+    color: #FFF;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -74,7 +81,10 @@ button {
   }
 }
 
-.unblock {
+.unblock-button {
+  font-size: 0.75em;
+  margin: 0.5em;
+  padding: 5px 10px;
   a {
     color: #FFF;
     text-decoration: none;
