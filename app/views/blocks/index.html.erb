@@ -1,21 +1,26 @@
-<nav><%= notice %> <%= link_to 'sign out', signout_path %></nav>
+<nav><span><%= notice %></span> <%= link_to 'sign out', signout_path %></nav>
 
 <div class="blocks">
 
   <h2>your blocks</h2>
-  <ul class="block-list">   
-    <% @blocks.each do |block| %>
-      <li>@<%= block["screen_name"] %>, <%= block["name"] %><br>
-        <%= block["created_at"] %><br>
-        <button class="unblock"><%= link_to 'unblock', block_path(block.id), :method => :delete %></button></li>
-    <% end %>
-  </ul>
+
+    <ul class="block-list">  
+      <% if @blocks != [] %> 
+        <% @blocks.each do |block| %>
+          <li>@<%= block.screen_name %>, <%= block.name %><br>
+            <%= block.created_at %><br>
+            <button class="unblock"><%= link_to 'unblock', block_path(block.id), :method => :delete %></button></li>
+        <% end %>
+      <% else %>
+        <li>You have no blocked users.</li>
+      <% end %>
+    </ul>
 
   <h2>recent mentions</h2>
   <ul class="block-list">
     <li>Current user: <%= @current_user.twitter_screen_name %></li>
     <% @mentions.each do |mention| %>
-      <li>@<%= mention["user"]["screen_name"] %>: <%= mention["text"] %></li>
+      <li>@<%= mention.user.screen_name %>: <%= mention.text %></li>
     <% end %>
   </ul>
 

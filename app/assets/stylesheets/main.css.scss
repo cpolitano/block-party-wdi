@@ -47,8 +47,14 @@ nav {
   opacity: 0.5;
   text-align: center;
   width: 100%;
+  span {
+    float: left;
+    margin-left: 2%;
+  }
   a {
     color: #FFF;
+    float: right;
+    margin-right: 2%;
     text-decoration: none;
   }
 }

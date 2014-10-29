@@ -11,18 +11,21 @@ class BlocksController < ApplicationController
       @twitter.block(user)
     end
 
-    # Collecting all blocked users and recent mentions for display in view
-    @blocks = @twitter.blocked
+    # Ensuring all blocked users are persisted to DB
+    @all_blocks = @twitter.blocked
+    @all_blocks.each do |user|
+      Block.create_block(user, @current_user)
+    end
+
+    # Collecting blocked users & mentions for current user to display in views
+    @blocks = Block.where(user_id: @current_user.id)
     @mentions = @twitter.mentions_timeline
-    # render json: @blocks
     # byebug
   end
 
   def create
-    @blocks.each do |block|
-      block = Block.new(screen_name: block["screen_name"], name: block["name"], created_at: block["created_at"], twitter_id: block["id_str"])
-      block.user_id = @current_user.id
-    end
+    # @blocks = @twitter.blocked
+    # Block.create_blocks(@blocks, @current_user)
   end
 
   def destroy

@@ -16,9 +16,9 @@ class User < ActiveRecord::Base
     trigger_words = ["rape","murder","nigger","slut","whore","bitch","cunt","kill","die","testword","soda"]
     users_to_block = []
     mentions.each do |mention|
-      mention["text"].split(" ").each do |word|
-        if trigger_words.include?(word) && twitter.friendship?(self, mention["user"]["screen_name"]) == false
-            users_to_block << mention["user"]["screen_name"]
+      mention.text.split(" ").each do |word|
+        if trigger_words.include?(word) && twitter.friendship?(self, mention.user.screen_name) == false
+            users_to_block << mention.user.screen_name
         end
       end
     end
