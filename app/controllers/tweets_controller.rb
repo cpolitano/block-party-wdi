@@ -1,8 +1,12 @@
 class TweetsController < ApplicationController
 
-  before_action :current_user
+  before_action :current_user, :initialize_twitter
 
   def index
+    @trigger_tweets = @current_user.determine_triggers(@twitter, @twitter.mentions_timeline)
+    @trigger_tweets.each do |tweet|
+      Tweet.create(screenname: tweet.user.screen_name, name: tweet.user.name, text: tweet.text, date: tweet.created_at, tweetid: tweet.id.to_s, user_id: @current_user.id)
+    end
     @tweets = Tweet.where(user: @current_user)
   end
 

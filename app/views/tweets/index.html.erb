@@ -1,0 +1,21 @@
+<%= render 'layouts/nav' %>
+
+<div class="blocks">
+
+  <h2>your trigger tweets</h2>
+  <p class="subheader">Each of these tweets triggered a block due to abusive language.</p>
+
+    <ul class="block-list">  
+      <% if @tweets != [] %> 
+        <% @tweets.each do |tweet| %>
+          <li class="delete-tweet" id="<%= tweet.id %>" >@<%= tweet.screenname %>, <%= tweet.name %><br>
+            <%= tweet.text %><br>
+            <a href="https://twitter.com/<%= tweet.screenname %>/status/<%= tweet.tweetid %>"><%= tweet.date %></a><br>
+            <button class="tweet-button">delete tweet</button></li>
+        <% end %>
+      <% else %>
+        <li>You have no saved trigger tweets.</li>
+      <% end %>
+    </ul>
+
+</div>

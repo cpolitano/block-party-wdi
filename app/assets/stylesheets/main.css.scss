@@ -23,11 +23,11 @@ h1 {
 .welcome, .blocks {
   float: left;
   margin-left: 8%;
-  width: 42%;
 }
 
 .welcome {
   font-size: 1.75em;
+  width: 42%;
 }
 
 .blocks {
@@ -35,6 +35,16 @@ h1 {
   margin-top: 3em;
   h2 {
     font-size: 2em;
+    margin-bottom: 0.125em;
+  }
+  .subheader {
+    font-size: 1.125em;
+    a {
+      color: #111;
+    }
+  }
+  .block-list {
+    width: 42%;
   }
 }
 
@@ -80,7 +90,7 @@ button {
   }
 }
 
-.unblock-button {
+.unblock-button, .tweet-button {
   font-size: 0.75em;
   margin: 0.5em;
   padding: 5px 10px;

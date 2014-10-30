@@ -4,7 +4,8 @@ class BlocksController < ApplicationController
 
   def index
     # Checking for abusive tweets, and identifying the users who sent them
-    @users_to_block = @current_user.determine_blocks(@twitter, @twitter.mentions_timeline)
+    @new_mentions = @twitter.mentions_timeline
+    @users_to_block = @current_user.determine_blocks(@twitter, @new_mentions)
 
     # Blocking all users identified in previous step
     @users_to_block.each do |user|
@@ -38,15 +39,6 @@ class BlocksController < ApplicationController
   end
 
   private
-
-  def initialize_twitter
-    @twitter = Twitter::REST::Client.new do |config|
-      config.consumer_key = ENV["twitter_key"]
-      config.consumer_secret = ENV["twitter_secret"]
-      config.access_token = session[:token]
-      config.access_token_secret = session[:token_secret]
-    end
-  end
 
   def block_params
     params.require(:block).permit(:screen_name, :name, :created_at, :twitter_id)

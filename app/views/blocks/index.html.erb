@@ -1,8 +1,9 @@
-<nav><span class="notice"><%= notice %></span> <span class="blockparty">block party | <%= link_to 'sign out', signout_path %></span></nav>
+<%= render 'layouts/nav' %>
 
 <div class="blocks">
 
   <h2>your blocks</h2>
+  <p class="subheader"><%= link_to "Click here", tweets_path %> to view saved trigger tweets.</p>
 
     <ul class="block-list">  
       <% if @blocks != [] %> 
