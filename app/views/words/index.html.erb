@@ -1,0 +1,39 @@
+<%= render 'layouts/nav' %>
+
+<div class="blocks">
+
+  <h2>your trigger words</h2>
+  <p class="subheader">Save additional words that you would like to trigger a block.</p>
+
+    <ul class="block-list">  
+      <% if @words != [] %> 
+        <% @words.each do |word| %>
+          <li class="delete-word" id="<%= word.id %>" ><%= word.word %><br>
+            <button class="word-button">delete word</button></li>
+        <% end %>
+      <% else %>
+        <li>You have no additional trigger words saved.</li>
+      <% end %>
+    </ul>
+
+  <h3>create an additional trigger word</h3>
+
+  <%= form_for(@word) do |f| %>
+    <% if @word.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@word.errors.count, "error") %> prohibited this word from being saved:</h2>
+
+        <ul>
+        <% @word.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :word %><br>
+    <%= f.text_field :word %>  
+    <%= f.submit %>
+  <% end %>
+
+</div>

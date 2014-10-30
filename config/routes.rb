@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :blocks, only: [:index, :create, :destroy]
   resources :tweets, only: [:index, :create, :destroy]
+  resources :words, only: [:index, :new, :create, :destroy]
 
   # You can have the root of your site routed with "root"
 

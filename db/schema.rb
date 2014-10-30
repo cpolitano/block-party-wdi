@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028134005) do
+ActiveRecord::Schema.define(version: 20141030183542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,5 +48,12 @@ ActiveRecord::Schema.define(version: 20141028134005) do
     t.string   "twitter_screen_name"
     t.string   "twitter_display_name"
   end
+
+  create_table "words", force: true do |t|
+    t.string  "word"
+    t.integer "user_id"
+  end
+
+  add_index "words", ["user_id"], name: "index_words_on_user_id", using: :btree
 
 end
