@@ -1,35 +1,70 @@
 $(document).ready(function(){
   
   // AJAX call to execute destroy function in blocks controller
-  deleteItem: function(type, item) {
-    id = $(item).attr("id");
-    button = $(item).children();
+  // function deleteItem(type, item) {
+  //   $.ajax({
+  //     url: type + "/" + id, 
+  //     type: "DELETE",
+  //     dataType: "json",
+  //     success: function() {
+  //       console.log('success!');
+  //       $(item).delay(10000).fadeOut(10000).remove();
+  //     }
+  //   });
+  // }
+
+  $("li.unblock").on("click", function(){
+    var self = this;
+    id = $(self).attr("id");
+    button = $(self).children();
     button.css({"background-color": "#B531E8"});
-    button.text("deleted!");
+    button.text("unblocked!");
+
     $.ajax({
-      url: type + "/" + id, 
+      url: "blocks/" + id, 
       type: "DELETE",
       dataType: "json",
       success: function() {
         console.log('success!');
-        $(item).delay(10000).fadeOut(10000).remove();
+        $(self).delay(10000).fadeOut(10000).remove();
       }
     });
-  }
-
-  $("li.unblock").on("click", function(){
-    var self = this;
-    deleteItem("blocks",self);
   })
 
   $("li.delete-tweet").on("click", function(){
     var self = this;
-    deleteItem("tweets", self);
+    id = $(self).attr("id");
+    button = $(self).children();
+    button.css({"background-color": "#B531E8"});
+    button.text("deleted!");
+
+    $.ajax({
+      url: "tweets/" + id, 
+      type: "DELETE",
+      dataType: "json",
+      success: function() {
+        console.log('success!');
+        $(self).delay(10000).fadeOut(10000).remove();
+      }
+    });
   })
 
   $("li.delete-word").on("click", function(){
     var self = this;
-    deleteItem("words", self);
+    id = $(self).attr("id");
+    button = $(self).children();
+    button.css({"background-color": "#B531E8"});
+    button.text("deleted!");
+
+    $.ajax({
+      url: "words/" + id, 
+      type: "DELETE",
+      dataType: "json",
+      success: function() {
+        console.log('success!');
+        $(self).delay(10000).fadeOut(10000).remove();
+      }
+    });
   })
   
 });

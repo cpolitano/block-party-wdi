@@ -3,7 +3,6 @@
 <div class="blocks">
 
   <h2>your blocks</h2>
-  <p class="subheader"><%= link_to "Click here", tweets_path %> to view saved trigger tweets.</p>
 
     <ul class="block-list">  
       <% if @blocks != [] %> 
@@ -23,4 +22,11 @@
     <% end %>
   </ul>
 
+</div>
+
+<div class="menu">
+  <ul>
+    <li><%= link_to "view saved trigger tweets", tweets_path %></li>
+    <li><%= link_to "set a new trigger word", words_path %></li>
+  </ul>
 </div>
