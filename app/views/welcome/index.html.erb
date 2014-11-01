@@ -1,8 +1,22 @@
 <div class="welcome">
-    <h1>block party</h1>
-    <p>Let's make Twitter fun again! We auto-block the jerks so you can focus on the important stuff.</p>
+    <div class="intro">
+      <h1>block party</h1>
+      <p>Let's make Twitter fun again!</p> 
+      <p>We auto-block the jerks so you can focus on the important stuff.</p>
+      <button id="about">tell me more</button>
+    </div>
+    <div class="about">
+      <p>Everyone deserves to participate in online discourse, but many voices are silenced by abusive tweets from online harassers, which often threaten physical violence and sexual assault.</p>
+
+      <p>Block Party hopes to alleviate this problem by blocking abusive users on your behalf. If you receive a tweet containing abusive language, we automatically block the offending user and remove the tweet from your timeline. We'll save a record of the trigger tweet in case you need it as evidence, and it'll be available here even if it was deleted from Twitter.</p>
+
+      <p>Block Party will never block a Twitter user that you follow, and we will never post a Tweet on your behalf.</p>
+
+      <p>If you aren't familiar with the problem of online harassment, on Twitter and other online spaces, this <a href="http://www.psmag.com/navigation/health-and-behavior/women-arent-welcome-internet-72170/">Pacific Standard article by Amanda Hess</a> is an excellent introduction to the issue.</p>
+      <button id="hide">hide</button>
+    </div>
 </div>
 
 <div class="signin">
-  <a href="/auth/twitter"><button>sign in with Twitter</button></a>
+  <a href="https://block-party-wdi.herokuapp.com/auth/twitter"><button id="signin">sign in with Twitter</button></a>
 </div>
