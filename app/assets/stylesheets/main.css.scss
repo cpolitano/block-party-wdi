@@ -30,7 +30,24 @@ h1 {
   font-size: 1.75em;
   width: 42%;
   p {
-    margin-top: 2em;
+    margin-top: 1em;
+  }
+  #about {
+    font-size: 0.7em;
+    margin: 0 auto;
+  }
+}
+
+.about {
+  display: none;
+  font-size: 0.625em;
+  a {
+    color: $accentColor;
+    text-decoration: none;
+  }
+  #hide {
+    font-size: 0.75em;
+    margin: 0 auto;
   }
 }
 
@@ -108,7 +125,7 @@ button {
   border-radius: 5px;
   color: #FFF;
   font-size: 1.5em;
-  margin: 10%;
+  margin: 10% 5%;
   outline: none;
   padding: 10px 15px;
   &:hover {

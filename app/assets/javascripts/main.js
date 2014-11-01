@@ -1,5 +1,17 @@
 $(document).ready(function(){
   
+  // Show and hide About section
+  $("#about").on("click", function(){
+    $(".intro").hide();
+    $(".about").fadeIn(750);
+    $("#signin").text("let's get this party started");
+  })
+
+  $("#hide").on("click", function(){
+    $(".about").hide();
+    $(".intro").fadeIn(750);
+  })
+
   // AJAX call to execute destroy function in blocks controller
   // function deleteItem(type, item) {
   //   $.ajax({
